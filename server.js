@@ -10,5 +10,8 @@ app.use(express.static(__dirname));
 app.use(express.static(__dirname + '/dist'));
 
 app.get('/', (req, res) => res.sendFile(path.resolve(__dirname, 'index.html')));
+app.get('/branch-name', (req, res) => res.send('branch-name'));
+
+app.get('*', () => res.send('ERROR :('));
 
 app.listen(port, () => console.log(`Listen on port ${port}`));
