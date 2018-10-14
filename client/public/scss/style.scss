@@ -1,0 +1,55 @@
+@import "./_variables.scss";
+@import "./_fonts.scss";
+@import "./_tools.scss";
+@import "./_generic.scss";
+@import "./_footer.scss";
+@import './_jumbotron.scss';
+
+.text-danger {
+    color: $DANGER;
+}
+
+.bg-light {
+    background-color: $BACKGROUND_COLOR !important;
+}
+
+.bg-dark {
+    background-color: $BACKGROUND_COLOR_DARKER !important;
+}
+
+.bg-primary-theme {
+    background-color: $THEME_COLOR_PRIMARY;
+    color: $THEME_COLOR_TEXT;
+
+    h1, h3 {
+        color: $THEME_COLOR_TEXT;
+    }
+}
+
+.describe-text {
+    line-height: $BASE_FONT_SIZE * 1.9;
+}
+
+.text-smaller-describe {
+    $SMALLER_FONT_SIZE: $BASE_FONT_SIZE * 0.9;
+    font-size: $SMALLER_FONT_SIZE;
+}
+
+.technique-image {
+    transition: all 0.8s ease-in-out;
+
+    &:hover, &:active {
+        transform: scale(2);
+    }
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+
+.link-wrapper-sites {
+    &:active, &:visited, &:link, &:hover, & {
+        color: $THEME_COLOR_TEXT !important;
+    }
+}

@@ -1,0 +1,48 @@
+import React from 'react';
+import {Container, Col, Row, Button} from 'reactstrap';
+import LangController from '../../lang/langController';
+import {BaseSectionPage} from './BaseSectionPage';
+
+const SECTION_NAMES = {
+    BRANCH_NAME: 'branchName',
+    CLASS_NAME: 'className',
+    TEST_CLASS_NAME: 'testClassName',
+};
+
+export class GeneratedNamesPage extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+
+        };
+    }
+
+    _prepareUrl(name) {
+        const path = 'http://localhost:3000'
+        return `${path}/${name}`;
+    }
+
+    _prepareSectionsData() {
+        return (Object.keys(SECTION_NAMES)).map(element => SECTION_NAMES[element]);
+    }
+
+    _renderSection(sectionName, index) {
+        return <BaseSectionPage
+            url={this._prepareUrl(sectionName)}
+            name={sectionName}
+            generatedName={this.props.generatedNames && this.props.generatedNames[sectionName]}
+            className={index % 2 ? 'bg-light' : 'bg-dark'}
+        />;
+    }
+
+    _renderSections() {
+        return this._prepareSectionsData().map((element, index) => this._renderSection(element, index));
+    }
+
+    render() {
+        return <React.Fragment>
+            {this._renderSections()}
+        </React.Fragment>;
+    }
+}
+

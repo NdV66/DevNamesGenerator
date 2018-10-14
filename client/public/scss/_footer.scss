@@ -1,0 +1,18 @@
+@import "_variables.scss";
+@import "_fonts.scss";
+@import "_tools.scss";
+
+.footer {
+    $fontSize: $BASE_FONT_SIZE * 0.8;
+    $padding: 0;
+
+    padding-top: $padding;
+    padding-bottom: $padding;
+    background-color: $THEME_COLOR_SECOND;
+    text-align: center;
+    font-size: $fontSize;
+    color: $THEME_COLOR_TEXT;
+    position: absolute;
+    right: 0;
+    left: 0;
+}

@@ -1,0 +1,27 @@
+@font-face {
+    font-family: Comfortaa;
+    src: url(../fonts/Comfortaa-Light.ttf);
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: Comfortaa;
+    src: url(../fonts/Comfortaa-Regular.ttf);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Comfortaa;
+    src: url(../fonts/Comfortaa-Bold.ttf);
+    font-weight: 600;
+}
+
+.biggerIconsAnimate {
+    $BIGGER_FONT_SIZE: $BASE_FONT_SIZE * 2.2;
+    font-size: $BIGGER_FONT_SIZE;
+    transition: all 0.4s ease;
+
+    &:active, &:hover {
+        font-size: $BIGGER_FONT_SIZE * 1.3;
+    }
+}

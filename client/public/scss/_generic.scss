@@ -1,0 +1,93 @@
+@import "_variables.scss";
+
+* {
+    font-family: Comfortaa;
+    font-weight: 200;
+    outline: 0 !important;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: $BACKGROUND_COLOR;
+    font-size: $BASE_FONT_SIZE;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    line-height: $BASE_FONT_SIZE * 1.8;
+}
+
+h1 {
+    font-size: $BASE_FONT_SIZE * 2.7;
+    color: $BACKGROUND_COLOR;
+}
+
+h2 {
+    font-size: $BASE_FONT_SIZE * 2;
+    color: $THEME_COLOR_TEXT;
+    text-decoration: underline;
+}
+
+h3 {
+    font-size: $BASE_FONT_SIZE * 1.2;
+    color: $THEME_COLOR_PRIMARY;
+}
+
+.btn {
+    border: none;
+    font-size: $BASE_FONT_SIZE;
+
+    &:hover, &:active {
+        outline: none;
+    }
+
+    &:focus, &:active {
+        outline: none !important;
+        box-shadow: none;
+    }
+}
+
+.btn-primary {
+    background-color: $THEME_COLOR_PRIMARY;
+    color: $THEME_COLOR_TEXT;
+
+    &:hover, &:active {
+        background-color: $THEME_COLOR_ACTIVE !important;
+        color: $THEME_COLOR_TEXT;
+    }
+}
+
+.btn-danger {
+    background-color: $DANGER;
+    color: $THEME_COLOR_TEXT;
+
+    &:hover, &:active {
+        background-color: $DANGER_ACTIVE;
+        color: $THEME_COLOR_TEXT;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    $XS_FONT_SIZE_BODY: $BASE_FONT_SIZE * 0.8;
+
+    .container {
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        font-size: $XS_FONT_SIZE_BODY * 1.6;
+    }
+
+    body {
+        font-size: $XS_FONT_SIZE_BODY;
+        line-height: $XS_FONT_SIZE_BODY * 1.8;
+    }
+
+    .text-smaller-describe {
+        font-size: $XS_FONT_SIZE_BODY * 0.9;
+    }
+}

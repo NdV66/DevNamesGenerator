@@ -1,0 +1,20 @@
+@import './_variables.scss';
+
+.logo-background-jumbotron {
+    $PADDING_JUMBOTRON: 24px;
+    background-image: url('../images/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: $BACKGROUND_COLOR_DARKER;
+    height: 50vh;
+    padding-top: $PADDING_JUMBOTRON;
+    padding-bottom: $PADDING_JUMBOTRON;
+}
+
+.logo-image-jumbotron {
+    max-height: 240px;
+}
+
+.name-secion {
+    margin-top: 16vh;
+}
