@@ -12,8 +12,9 @@ export class GeneratedNamesPage extends React.Component {
         };
     }
     _prepareUrl(name) {
-        const path = 'http://localhost:3000';
-        return `${path}/${name}`;
+        const path = 'http://localhost:8080';
+        const api = 'get-name';
+        return `${path}/${api}/${name}`;
     }
 
     _prepareSectionsData() {

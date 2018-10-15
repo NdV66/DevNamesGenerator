@@ -13,7 +13,6 @@ const VERBS = [
     'makes',
     'did',
     'likes',
-
 ];
 
 module.exports = {SUBJECTS, VERBS};

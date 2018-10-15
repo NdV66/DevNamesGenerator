@@ -15,7 +15,16 @@ export class BaseSectionPage extends React.Component {
     }
 
     _onClick() {
-
+        fetch(this.props.url)
+            .then(res => res.json())
+            .then(
+                result => {
+                    this.setState({generatedName: 'Anastazja'});
+                },
+                error => {
+                    console.log('PANIC', error);
+                }
+            );
     }
 
     _prepareHeaderName() {
@@ -35,12 +44,16 @@ export class BaseSectionPage extends React.Component {
                 <Row>
                     <Col>
                         <div className='generatedName-desc'>
-                            <h3 className='d-inl0ine-block'>{this._prepareHeaderName()}</h3>
+                            <h3 className='d-inline-block'>{this._prepareHeaderName()}</h3>
                             <Button className='float-right' onClick={() => this._onClick()}>
-                                <IconElement icon='location-arrow' />
+                                <IconElement icon='location-arrow' className='d-none d-md-inline-block'/>
                                 {LANG.GENERATE_ONE}
                             </Button>
                         </div>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
                         <div className='generated-name'>{this.state.generatedName}</div>
                     </Col>
                 </Row>

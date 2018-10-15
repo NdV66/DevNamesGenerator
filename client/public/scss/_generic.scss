@@ -23,6 +23,8 @@ body {
 h1 {
     font-size: $BASE_FONT_SIZE * 2.7;
     color: $BACKGROUND_COLOR;
+    background-color: $THEME_COLOR_PRIMARY;
+    border-radius: 0.25rem;
 }
 
 h2 {
@@ -80,6 +82,10 @@ h3 {
 
     h1 {
         font-size: $XS_FONT_SIZE_BODY * 1.6;
+    }
+
+    .btn {
+        font-size: $XS_FONT_SIZE_BODY;
     }
 
     body {
