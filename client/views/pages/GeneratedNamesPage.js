@@ -2,12 +2,7 @@ import React from 'react';
 import {Container, Col, Row, Button} from 'reactstrap';
 import LangController from '../../lang/langController';
 import {BaseSectionPage} from './BaseSectionPage';
-
-const SECTION_NAMES = {
-    BRANCH_NAME: 'branchName',
-    CLASS_NAME: 'className',
-    TEST_CLASS_NAME: 'testClassName',
-};
+import SECTION_NAMES from '../../../sectionNames.json';
 
 export class GeneratedNamesPage extends React.Component {
     constructor(props) {
@@ -16,9 +11,8 @@ export class GeneratedNamesPage extends React.Component {
 
         };
     }
-
     _prepareUrl(name) {
-        const path = 'http://localhost:3000'
+        const path = 'http://localhost:3000';
         return `${path}/${name}`;
     }
 
@@ -28,6 +22,7 @@ export class GeneratedNamesPage extends React.Component {
 
     _renderSection(sectionName, index) {
         return <BaseSectionPage
+            key={sectionName}
             url={this._prepareUrl(sectionName)}
             name={sectionName}
             generatedName={this.props.generatedNames && this.props.generatedNames[sectionName]}

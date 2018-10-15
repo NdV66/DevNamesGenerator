@@ -8,7 +8,7 @@ const isDevMode = process.env.conf === 'DEV';
 console.log('------ webpack in mode: ' + process.env.conf);
 
 const HtmlWebpackPluginConfig_Index = new HtmlWebpackPlugin({
-    template: './client/index.html',
+    template: './index.html',
     filename: 'index.html',
     inject: 'body',
     chunks: ['index']
