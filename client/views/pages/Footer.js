@@ -1,7 +1,6 @@
 import React from 'react';
 import {Container, Col, Row} from 'reactstrap';
 import LangController from '../../lang/langController';
-import Icon from '../elements/IconElement';
 
 const LANG = LangController.getDefaultLang();
 

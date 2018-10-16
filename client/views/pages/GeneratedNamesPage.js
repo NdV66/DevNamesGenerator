@@ -7,14 +7,10 @@ import SECTION_NAMES from '../../../sectionNames.json';
 export class GeneratedNamesPage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-
-        };
     }
+
     _prepareUrl(name) {
-        const path = 'http://localhost:8080';
-        const api = 'get-name';
-        return `${path}/${api}/${name}`;
+        return `${this.props.path}/${this.props.api}/${name}`;
     }
 
     _prepareSectionsData() {
@@ -26,8 +22,10 @@ export class GeneratedNamesPage extends React.Component {
             key={sectionName}
             url={this._prepareUrl(sectionName)}
             name={sectionName}
-            generatedName={this.props.generatedNames && this.props.generatedNames[sectionName]}
+            generatedName={this.props.generatedNames && this.props.generatedNames[sectionName] || this.props.defaultName}
             className={index % 2 ? 'bg-light' : 'bg-dark'}
+            onClick={this.props.onClick}
+            isLoading={this.props.loadingStates && this.props.loadingStates[sectionName]}
         />;
     }
 

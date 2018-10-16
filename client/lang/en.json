@@ -1,5 +1,6 @@
 {
     "NAME": "Dev Names Generator",
-    "TRY_IT": "Try it!",
-    "GENERATE_ONE": "Let's go"
+    "TRY_IT": "Try the Dev Names Generator!",
+    "GENERATE_ONE": "Let's go",
+    "LOADING_MESSAGE": "Loading..."
 }

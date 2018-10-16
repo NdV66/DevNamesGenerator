@@ -2,21 +2,126 @@ import React from 'react';
 import {HashRouter as Router} from 'react-router-dom';
 import {Container} from 'reactstrap';
 import HomePage from '../views/pages/HomePage';
-import LangController from '../lang/langController';
 import Footer from '../views/pages/Footer';
 import {GeneratedNamesPage} from '../views/pages/GeneratedNamesPage';
+import SECTION_NAMES from '../../sectionNames.json';
 
-const LANG = LangController.getDefaultLang();
+const path = 'http://localhost:8080';
+const api = 'get-name';
+const defaultName = 'Click button to generate this name';
+
+class AppWrapperController extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            generatedNames: {},
+            loadingStates: {},
+        };
+    }
+
+    _onFetchGeneratedNamesOk(response) {
+        this.setState({generatedNames: response.generatedNames});
+    }
+
+    _onFetchGeneratedNamesError(error) {
+        this.setState({generatedNames: {}});
+    }
+
+    _prepareUrl() {
+        return `${path}/${api}`;
+    }
+
+    _onClickLoadFullNamesButton() {
+        this._turnOnAllLoading();
+        fetch(this._prepareUrl())
+            .then(res => res.json())
+            .then(
+                result => this._onFetchGeneratedNamesOk(result),
+                error => this._onFetchGeneratedNamesError(error)
+            )
+            .then(() => this._turnOffAllLoading());
+    }
+
+    _onFetchGeneratedNameOk(response, currentName) {
+        const newName = response.generatedName;
+        const generatedNames = this.state.generatedNames;
+        generatedNames[currentName] = newName || defaultName;
+        this.setState({generatedNames});
+    }
+
+    _onFetchGeneratedNameError(error, currentName) {
+        const {generatedNames} = this.state;
+        generatedNames[currentName] = defaultName;
+        this.setState({generatedNames});
+    }
+
+    _getCurrentNameUrl(name) {
+        return `${this._prepareUrl()}/${name}`;
+    }
+
+    _setLoadingByName(name, isLoading) {
+        const {loadingStates} = this.state;
+        loadingStates[name] = isLoading;
+        this.setState({loadingStates});
+    }
+
+    _turnOnLoading(name) {
+        this._setLoadingByName(name, true);
+    }
+
+    _turnOffLoading(name) {
+        this._setLoadingByName(name, false);
+    }
+
+    _setLoadingForAllElements(value) {
+        const {loadingStates} = this.state;
+        const sectionNames = Object.keys(SECTION_NAMES).map(sectionName => SECTION_NAMES[sectionName]);
+        sectionNames.forEach(sectionName => loadingStates[sectionName] = value);
+        this.setState({loadingStates});
+    }
+
+    _turnOffAllLoading() {
+        this._setLoadingForAllElements(false);
+    }
+
+    _turnOnAllLoading() {
+        this._setLoadingForAllElements(true);
+    }
+
+    _onClick(name) {
+        this._turnOnLoading(name);
+        fetch(this._getCurrentNameUrl(name))
+            .then(res => res.json())
+            .then(
+                result => this._onFetchGeneratedNameOk(result, name),
+                error => this._onFetchGeneratedNameError(error, name)
+            )
+            .then(() => this._turnOffLoading(name));
+    }
+
+    render() {
+        return <React.Fragment>
+            <header>
+                <HomePage onClickButton={() => this._onClickLoadFullNamesButton()}/>
+            </header>
+            <main>
+                <GeneratedNamesPage
+                    path={path}
+                    api={api}
+                    generatedNames={this.state.generatedNames}
+                    onClick={(name) => this._onClick(name)}
+                    defaultName={defaultName}
+                    loadingStates={this.state.loadingStates}
+                />
+            </main>
+        </React.Fragment>;
+    }
+}
 
 const App = () =>
     <Router>
         <Container fluid className='no-padding no-margin'>
-            <header>
-                <HomePage />
-            </header>
-            <main>
-                <GeneratedNamesPage />
-            </main>
+            <AppWrapperController />
             <footer className='footer'>
                 <Footer />
             </footer>

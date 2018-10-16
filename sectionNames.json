@@ -1,5 +1,5 @@
 {
     "GIT_BRANCH": "git-branch",
     "GIT_COMMIT": "git-commit",
-    "GIT-COMMIT_M": "git-commit-m"
+    "GIT_COMMIT_M": "git-commit-m"
 }
