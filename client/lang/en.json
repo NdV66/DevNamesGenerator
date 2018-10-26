@@ -2,5 +2,7 @@
     "NAME": "Dev Names Generator",
     "TRY_IT": "Try the Dev Names Generator!",
     "GENERATE_ONE": "Let's go",
-    "LOADING_MESSAGE": "Loading..."
+    "LOADING_MESSAGE": "Loading...",
+    "ERROR_NAME": "Oops...!",
+    "DEFAULT_NAME": "Click button to generate this name"
 }

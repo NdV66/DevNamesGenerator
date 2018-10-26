@@ -5,3 +5,4 @@ const LangController = {
 };
 
 export default LangController;
+export const Lang = LangController.getDefaultLang();

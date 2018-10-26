@@ -5,10 +5,12 @@ import HomePage from '../views/pages/HomePage';
 import Footer from '../views/pages/Footer';
 import {GeneratedNamesPage} from '../views/pages/GeneratedNamesPage';
 import SECTION_NAMES from '../../sectionNames.json';
+import {Lang} from '../lang/langController';
 
 const path = 'http://localhost:8080';
 const api = 'get-name';
-const defaultName = 'Click button to generate this name';
+const defaultName = Lang.DEFAULT_NAME;
+const errorName = Lang.ERROR_NAME;
 
 class AppWrapperController extends React.Component {
     constructor(props) {
@@ -19,12 +21,19 @@ class AppWrapperController extends React.Component {
         };
     }
 
+    _setValueForAllSections(valuesHolder, value = defaultName) {
+        const sectionNames = Object.keys(SECTION_NAMES);
+        sectionNames.forEach(sectionName => valuesHolder[sectionName] = value);
+        return valuesHolder;
+    }
+
     _onFetchGeneratedNamesOk(response) {
         this.setState({generatedNames: response.generatedNames});
     }
 
     _onFetchGeneratedNamesError(error) {
-        this.setState({generatedNames: {}});
+        const generatedNames = this._setValueForAllSections(this.state.generatedNames, errorName);
+        this.setState({generatedNames});
     }
 
     _prepareUrl() {
@@ -51,7 +60,7 @@ class AppWrapperController extends React.Component {
 
     _onFetchGeneratedNameError(error, currentName) {
         const {generatedNames} = this.state;
-        generatedNames[currentName] = defaultName;
+        generatedNames[currentName] = errorName;
         this.setState({generatedNames});
     }
 
@@ -74,9 +83,7 @@ class AppWrapperController extends React.Component {
     }
 
     _setLoadingForAllElements(value) {
-        const {loadingStates} = this.state;
-        const sectionNames = Object.keys(SECTION_NAMES).map(sectionName => SECTION_NAMES[sectionName]);
-        sectionNames.forEach(sectionName => loadingStates[sectionName] = value);
+        const loadingStates = this._setValueForAllSections(this.state.loadingStates, value);
         this.setState({loadingStates});
     }
 

@@ -8,4 +8,4 @@ const Generator = {
     generateCommonSentence,
 };
 
-module.export = Generator;
+module.exports = Generator;

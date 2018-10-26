@@ -1,12 +1,13 @@
 const router = require('express').Router();
 const SECTION_NAMES = require('../../sectionNames.json');
+const namesGenerator = require('../generator/generator');
 
 function _prepareUrl(name) {
     return `/${name}`;
 }
 
 function _generateBranchName() {
-    return 'TEST';
+    return namesGenerator.generateCommonSentence();
 }
 
 function sendResponse(res, generatedName) {
