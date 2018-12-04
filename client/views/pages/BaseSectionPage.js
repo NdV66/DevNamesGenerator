@@ -23,7 +23,7 @@ export const BaseSectionPage = (props) =>  {
                 <Col>
                     <div className='generatedName-desc'>
                         <h3 className='d-inline-block'>{_prepareHeaderName()}</h3>
-                        <Button className='float-right' onClick={() => props.onClick(props.sectionKey)}>
+                        <Button className='float-right' onClick={() => props.onClick(props.name)}>
                             <IconElement icon='location-arrow' className='d-none d-md-inline-block'/>
                             {LANG.GENERATE_ONE}
                         </Button>

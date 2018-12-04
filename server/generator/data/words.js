@@ -1,10 +1,13 @@
 const SUBJECTS = [
-    'my friend',
-    'my code',
-    'my friend\'s code',
+    'myFriend',
+    'myCode',
+    'myFriend\'sCode',
     'cat',
     'Batman',
     'humans',
+    'Saruman',
+    'myDog',
+    'myOldGrandma'
 ];
 
 const VERBS = [
@@ -13,6 +16,8 @@ const VERBS = [
     'makes',
     'did',
     'likes',
+    'writes',
+    'licks',
 ];
 
 module.exports = {SUBJECTS, VERBS};
