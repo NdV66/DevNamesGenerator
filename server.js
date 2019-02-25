@@ -1,11 +1,12 @@
 const express = require('express');
-const path = require('path');
 const morgan = require('morgan');
 const routerIndex = require('./server/routes/routerIndex');
+const helmet = require('helmet')
 
 const port = process.env.PORT || 8080;
 const app = express();
 
+app.use(helmet());
 app.use(morgan('dev'));
 app.use(express.json());
 // app.use(express.static(__dirname));
