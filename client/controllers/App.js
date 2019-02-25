@@ -7,7 +7,7 @@ import {GeneratedNamesPage} from '../views/pages/GeneratedNamesPage';
 import SECTION_NAMES from '../../sectionNames.json';
 import {Lang} from '../lang/langController';
 
-const path = 'http://localhost:8080';
+const path = 'https://dev-names-generator.herokuapp.com';
 const api = 'get-name';
 const defaultName = Lang.DEFAULT_NAME;
 const errorName = Lang.ERROR_NAME;
